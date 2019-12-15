@@ -3,4 +3,4 @@ project(Music__)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Music__ main.cpp EDD/ListaDoble.h EDD/NodoOrtogonal.h EDD/CuboOrtogonal.h)
+add_executable(Music__ main.cpp EDD/ListaDoble.h EDD/NodoOrtogonal.h EDD/CuboOrtogonal.h EDD/ArbolBinario/NodoBinario.cpp EDD/ArbolBinario/NodoBinario.h)

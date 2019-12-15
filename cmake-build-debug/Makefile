@@ -122,6 +122,33 @@ Music__/fast:
 	$(MAKE) -f CMakeFiles\Music__.dir\build.make CMakeFiles/Music__.dir/build
 .PHONY : Music__/fast
 
+EDD/ArbolBinario/NodoBinario.obj: EDD/ArbolBinario/NodoBinario.cpp.obj
+
+.PHONY : EDD/ArbolBinario/NodoBinario.obj
+
+# target to build an object file
+EDD/ArbolBinario/NodoBinario.cpp.obj:
+	$(MAKE) -f CMakeFiles\Music__.dir\build.make CMakeFiles/Music__.dir/EDD/ArbolBinario/NodoBinario.cpp.obj
+.PHONY : EDD/ArbolBinario/NodoBinario.cpp.obj
+
+EDD/ArbolBinario/NodoBinario.i: EDD/ArbolBinario/NodoBinario.cpp.i
+
+.PHONY : EDD/ArbolBinario/NodoBinario.i
+
+# target to preprocess a source file
+EDD/ArbolBinario/NodoBinario.cpp.i:
+	$(MAKE) -f CMakeFiles\Music__.dir\build.make CMakeFiles/Music__.dir/EDD/ArbolBinario/NodoBinario.cpp.i
+.PHONY : EDD/ArbolBinario/NodoBinario.cpp.i
+
+EDD/ArbolBinario/NodoBinario.s: EDD/ArbolBinario/NodoBinario.cpp.s
+
+.PHONY : EDD/ArbolBinario/NodoBinario.s
+
+# target to generate assembly for a file
+EDD/ArbolBinario/NodoBinario.cpp.s:
+	$(MAKE) -f CMakeFiles\Music__.dir\build.make CMakeFiles/Music__.dir/EDD/ArbolBinario/NodoBinario.cpp.s
+.PHONY : EDD/ArbolBinario/NodoBinario.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -158,6 +185,9 @@ help:
 	@echo ... Music__
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... EDD/ArbolBinario/NodoBinario.obj
+	@echo ... EDD/ArbolBinario/NodoBinario.i
+	@echo ... EDD/ArbolBinario/NodoBinario.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
