@@ -80,6 +80,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="D:/Documentos/Programacion/C++/Music++/EDD/CuboOrtogonal.h">
+			<Option target="Music__"/>
+		</Unit>
 		<Unit filename="D:/Documentos/Programacion/C++/Music++/EDD/ListaDoble.h">
 			<Option target="Music__"/>
 		</Unit>
