@@ -160,3 +160,41 @@ void Biblioteca(){
     }while(eleccionB != 0);
 }
 
+void PlayLista(){
+    int eleccionPL = 0;
+
+    do{
+        cout<<"	1 Stack Pila"<<endl;
+        cout<<"	2 Queue Cola"<<endl;
+        cout<<"	3 Shuffle Lista doblemente enlazada"<<endl;
+        cout<<"	4 Circular Lista doblemente enlazada circular"<<endl;
+        cout<<"	5 Regresar al menu principal"<<endl;
+        cout << "Ingresa una opcion: ";
+
+        cin >> eleccionPL;
+
+        cout << "" <<  endl << endl;
+        if(eleccionPL == 1){
+            cout<<"Stack"<<endl;
+        }else if(eleccionPL == 2){
+            cout<<"Queue"<<endl;
+        }else if(eleccionPL == 3){
+            cout<<"Shuffle"<<endl;
+        }else if(eleccionPL == 4){
+            cout<<"Circular"<<endl;
+        }else if(eleccionPL == 5){
+            cout<<"Regresar al menu principal"<<endl;
+            Menu();
+            break;
+        }else{
+            eleccionPL = 0;
+        }
+    }while(eleccionPL != 0);
+}
+
+
+
+
+
+
+
