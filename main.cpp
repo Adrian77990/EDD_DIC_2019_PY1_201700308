@@ -134,5 +134,29 @@ void Reproduccion(){
     }while(eleccionREP != 0);
 }
 
+void Biblioteca(){
+    int eleccionB = 0;
 
+    do{
+        cout<<"	1 By artist"<<endl;
+        cout<<"	2 By songs"<<endl;
+        cout<<"	3 Regresar al menu principal"<<endl;
+        cout << "Ingresa una opcion: ";
+
+        cin >> eleccionB;
+
+        cout << "" <<  endl << endl;
+        if(eleccionB == 1){
+            cout<<"By artist"<<endl;
+        }else if(eleccionB == 2){
+            cout<<"By songs"<<endl;
+        }else if(eleccionB == 3){
+            cout<<"Regresar al menu principal"<<endl;
+            Menu();
+            break;
+        }else{
+            eleccionB = 0;
+        }
+    }while(eleccionB != 0);
+}
 
