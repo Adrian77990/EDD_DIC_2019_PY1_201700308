@@ -67,3 +67,41 @@ void Menu(){
         }
     }while(eleccionM != 0);
 }
+
+void Reportes(){
+    int eleccionR = 0;
+
+    do{
+        cout<<"	1 Artist Report"<<endl;
+        cout<<"	2 Discography Report"<<endl;
+        cout<<"	3 Album Report"<<endl;
+        cout<<"	4 Playlist Report"<<endl;
+        cout<<"	5 Top 5 Albums by artist report"<<endl;
+        cout<<"	6 Top 5 artist "<<endl;
+        cout<<"	7 Regresar al menu principal"<<endl;
+        cout << "Ingresa una opcion: ";
+
+        cin >> eleccionR;
+
+        cout << "" <<  endl << endl;
+        if(eleccionR == 1){
+            cout<<"Artist Report"<<endl;
+        }else if(eleccionR == 2){
+            cout<<"Discography Report"<<endl;
+        }else if(eleccionR == 3){
+            cout<<"Album Report"<<endl;
+        }else if(eleccionR == 4) {
+            cout << "Playlist Report" << endl;
+        }else if(eleccionR == 5){
+            cout<<"Top 5 Albums by artist report"<<endl;
+        }else if(eleccionR == 6){
+            cout<<"Top 5 artists"<<endl;
+        }else if(eleccionR == 7){
+            cout<<"Regresas a menu"<<endl;
+            // Menu();
+            break;
+        }else{
+            eleccionR = 0;
+        }
+    }while(eleccionR != 0);
+}
