@@ -105,3 +105,34 @@ void Reportes(){
         }
     }while(eleccionR != 0);
 }
+
+void Reproduccion(){
+    int eleccionREP = 0;
+
+    do{
+        cout<<"	1 Biblioteca"<<endl;
+        cout<<"	2 Playlist"<<endl;
+        cout<<"	3 Regresar al menu principal"<<endl;
+        cout << "Ingresa una opcion: ";
+
+        cin >> eleccionREP;
+
+        cout << "" <<  endl << endl;
+        if(eleccionREP == 1){
+            cout<<"Biblioteca"<<endl;
+            Biblioteca();
+        }else if(eleccionREP == 2){
+            cout<<"Playlist"<<endl;
+            PlayLista();
+        }else if(eleccionREP == 3){
+            cout<<"Regresar al menu principal"<<endl;
+            // Menu();
+            break;
+        }else{
+            eleccionREP = 0;
+        }
+    }while(eleccionREP != 0);
+}
+
+
+
