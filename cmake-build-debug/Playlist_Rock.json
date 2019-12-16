@@ -1,0 +1,52 @@
+{
+  "Type": "Stack",
+  "Songs": [
+    {
+      "Year": "2004",
+      "Month": "Julio",
+      "Album": "They're Only Chasing Safety",
+      "Song": "Young and Aspiring",
+      "Artist": "Underoath"
+    }
+    ,
+    {
+      "Year": "2018",
+      "Month": "Abril",
+      "Album": "Erase Me",
+      "Song": "On My Teeth",
+      "Artist": "Underoath"
+    }
+    ,
+    {
+      "Year": "2019",
+      "Month": "Septiembre",
+      "Album": "Shaped By Fire",
+      "Song": "Blinded",
+      "Artist": "As I Lay Dying"
+    }
+    ,
+    {
+      "Year": "2010",
+      "Month": "Enero",
+      "Album": "RHCP",
+      "Song": "Snow Hey",
+      "Artist": "Red Hot Chili Peppers"
+    }
+    ,
+    {
+      "Year": "2008",
+      "Month": "Enero",
+      "Album": "November Rain",
+      "Song": "November Rain",
+      "Artist": "Guns n Roses"
+    }
+    ,
+    {
+      "Year": "2000",
+      "Month": "Mayo",
+      "Album": "Under The Bridge",
+      "Song": "Under The Brinde",
+      "Artist": "Red Hot Chili Peppers"
+    }
+  ]
+}

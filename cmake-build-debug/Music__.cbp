@@ -98,6 +98,24 @@
 		<Unit filename="D:/Documentos/Programacion/C++/Music++/EDD/ListaDoble.h">
 			<Option target="Music__"/>
 		</Unit>
+		<Unit filename="D:/Documentos/Programacion/C++/Music++/EDD/Listas/ListaCanciones/ListaSimple.h">
+			<Option target="Music__"/>
+		</Unit>
+		<Unit filename="D:/Documentos/Programacion/C++/Music++/EDD/Listas/ListaCanciones/NodoListaSimple.h">
+			<Option target="Music__"/>
+		</Unit>
+		<Unit filename="D:/Documentos/Programacion/C++/Music++/EDD/Listas/ListaPalabras/ListaPalabras.h">
+			<Option target="Music__"/>
+		</Unit>
+		<Unit filename="D:/Documentos/Programacion/C++/Music++/EDD/Listas/ListaPalabras/NodoPalabras.h">
+			<Option target="Music__"/>
+		</Unit>
+		<Unit filename="D:/Documentos/Programacion/C++/Music++/EDD/Listas/Pila_Cola_Circular/Lista.h">
+			<Option target="Music__"/>
+		</Unit>
+		<Unit filename="D:/Documentos/Programacion/C++/Music++/EDD/Listas/Pila_Cola_Circular/Nodo.h">
+			<Option target="Music__"/>
+		</Unit>
 		<Unit filename="D:/Documentos/Programacion/C++/Music++/EDD/NodoOrtogonal.h">
 			<Option target="Music__"/>
 		</Unit>

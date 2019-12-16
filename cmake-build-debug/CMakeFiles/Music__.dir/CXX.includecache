@@ -6,9 +6,17 @@
 
 #IncludeRegexTransform: 
 
+D:/Documentos/Programacion/C++/Music++/EDD/ArbolBinario/ABB.cpp
+fstream
+-
+ABB.h
+D:/Documentos/Programacion/C++/Music++/EDD/ArbolBinario/ABB.h
+
 D:/Documentos/Programacion/C++/Music++/EDD/ArbolBinario/ABB.h
 NodoBinario.h
 D:/Documentos/Programacion/C++/Music++/EDD/ArbolBinario/NodoBinario.h
+../Listas/Pila_Cola_Circular/Lista.h
+D:/Documentos/Programacion/C++/Music++/EDD/Listas/Pila_Cola_Circular/Lista.h
 iostream
 -
 
@@ -17,6 +25,8 @@ iostream
 -
 string
 -
+../Listas/Pila_Cola_Circular/Lista.h
+D:/Documentos/Programacion/C++/Music++/EDD/Listas/Pila_Cola_Circular/Lista.h
 
 D:/Documentos/Programacion/C++/Music++/EDD/CuboOrtogonal.h
 string
@@ -36,9 +46,53 @@ D:/Documentos/Programacion/C++/Music++/EDD/CuboOrtogonal.h
 string
 -
 
+D:/Documentos/Programacion/C++/Music++/EDD/Listas/ListaCanciones/ListaSimple.h
+iostream
+-
+string
+-
+NodoListaSimple.h
+D:/Documentos/Programacion/C++/Music++/EDD/Listas/ListaCanciones/NodoListaSimple.h
+
+D:/Documentos/Programacion/C++/Music++/EDD/Listas/ListaCanciones/NodoListaSimple.h
+iostream
+-
+string
+-
+
+D:/Documentos/Programacion/C++/Music++/EDD/Listas/ListaPalabras/ListaPalabras.h
+iostream
+-
+string
+-
+NodoPalabras.h
+D:/Documentos/Programacion/C++/Music++/EDD/Listas/ListaPalabras/NodoPalabras.h
+
+D:/Documentos/Programacion/C++/Music++/EDD/Listas/ListaPalabras/NodoPalabras.h
+iostream
+-
+string
+-
+
+D:/Documentos/Programacion/C++/Music++/EDD/Listas/Pila_Cola_Circular/Lista.h
+iostream
+-
+string
+-
+Nodo.h
+D:/Documentos/Programacion/C++/Music++/EDD/Listas/Pila_Cola_Circular/Nodo.h
+
+D:/Documentos/Programacion/C++/Music++/EDD/Listas/Pila_Cola_Circular/Nodo.h
+iostream
+-
+string
+-
+
 D:/Documentos/Programacion/C++/Music++/EDD/NodoOrtogonal.h
 string
 -
+Listas/ListaCanciones/ListaSimple.h
+D:/Documentos/Programacion/C++/Music++/EDD/Listas/ListaCanciones/ListaSimple.h
 
 D:/Documentos/Programacion/C++/Music++/json.hpp
 algorithm
@@ -339,4 +393,10 @@ EDD/CuboOrtogonal.h
 D:/Documentos/Programacion/C++/Music++/EDD/CuboOrtogonal.h
 EDD/ArbolBinario/ABB.h
 D:/Documentos/Programacion/C++/Music++/EDD/ArbolBinario/ABB.h
+EDD/Listas/ListaCanciones/ListaSimple.h
+D:/Documentos/Programacion/C++/Music++/EDD/Listas/ListaCanciones/ListaSimple.h
+EDD/Listas/ListaPalabras/ListaPalabras.h
+D:/Documentos/Programacion/C++/Music++/EDD/Listas/ListaPalabras/ListaPalabras.h
+EDD/Listas/Pila_Cola_Circular/Lista.h
+D:/Documentos/Programacion/C++/Music++/EDD/Listas/Pila_Cola_Circular/Lista.h
 
