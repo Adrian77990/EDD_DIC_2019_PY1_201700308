@@ -1,0 +1,126 @@
+{
+  "Library":[
+    {
+      "Artist" :{
+        "Name": "Underoath",
+        "Albums": [
+          {
+            "Name": "They're Only Chasing Safety",
+            "Month" : "Julio",
+            "Year" : "2004",
+            "Songs": [
+              {
+                "Name": "Young and Aspiring",
+                "File": "YoungAndAspiring.mp3",
+                "Rating": "8.0"
+              }
+              ,
+              {
+                "Name": "Some Will Seek Forgiveness, Others Escape",
+                "File": "SomeWillSeekForfiveness.mp3",
+                "Rating": "8.0"
+              }
+            ]
+          }
+          ,
+          {
+            "Name": "Erase Me",
+            "Month": "Abril",
+            "Year": "2018",
+            "Songs" : [
+              {
+                "Name": "On My Teeth",
+                "File": "OnMyTeeth.mp3",
+                "Rating": "9.0"
+              }
+              ,
+              {
+                "Name": "Rapture",
+                "File": "Rapture.mp3",
+                "Rating": "9.0"
+              }
+            ]
+          }
+        ]
+      }
+    }
+    ,
+    {
+      "Artist" :{
+        "Name": "As I Lay Dying",
+        "Albums": [
+          {
+            "Name": "Shaped By Fire",
+            "Month": "Septiembre",
+            "Year": "2019",
+            "Songs": [
+              {
+                "Name": "Blinded",
+                "File": "b.mp3",
+                "Rating": "8.0"
+              }
+              ,
+              {
+                "Name": "Shaped by Fire",
+                "File": "shaped.mp3",
+                "Rating": "10.0"
+              }
+            ]
+          }
+        ]
+      }
+    }
+        ,
+    {
+      "Artist" :{
+        "Name": "My Space",
+        "Albums": [
+          {
+            "Name": "Shaped water",
+            "Month": "Septiembre",
+            "Year": "2019",
+            "Songs": [
+              {
+                "Name": "Blinded",
+                "File": "b.mp3",
+                "Rating": "8.0"
+              }
+              ,
+              {
+                "Name": "Shaped by Fire",
+                "File": "shaped.mp3",
+                "Rating": "10.0"
+              }
+            ]
+          }
+        ]
+      }
+    }
+        ,
+    {
+      "Artist" :{
+        "Name": "Policia",
+        "Albums": [
+          {
+            "Name": "Shaped earth",
+            "Month": "Septiembre",
+            "Year": "2019",
+            "Songs": [
+              {
+                "Name": "Blinded",
+                "File": "b.mp3",
+                "Rating": "8.0"
+              }
+              ,
+              {
+                "Name": "Shaped by Fire",
+                "File": "shaped.mp3",
+                "Rating": "10.0"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

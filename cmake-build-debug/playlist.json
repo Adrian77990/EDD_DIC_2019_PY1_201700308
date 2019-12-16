@@ -1,0 +1,28 @@
+{
+  "Type": "Stack",
+  "Songs": [
+    {
+      "Year": "2004",
+      "Month": "Julio",
+      "Album": "They're Only Chasing Safety",
+      "Song": "Young and Aspiring",
+      "Artist": "Underoath"
+    }
+    ,
+    {
+      "Year": "2018",
+      "Month": "Abril",
+      "Album": "Erase Me",
+      "Song": "On My Teeth",
+      "Artist": "Underoath"
+    }
+    ,
+    {
+      "Year": "2019",
+      "Month": "Septiembre",
+      "Album": "Shaped By Fire",
+      "Song": "Blinded",
+      "Artist": "As I Lay Dying"
+    }
+  ]
+}
