@@ -60,6 +60,63 @@
               }
             ]
           }
+          ,
+          {
+            "Name": "Dev",
+            "Month": "Enero",
+            "Year": "2018",
+            "Songs" : [
+              {
+                "Name": "On My Teeth",
+                "File": "OnMyTeeth.mp3",
+                "Rating": "5.0"
+              }
+              ,
+              {
+                "Name": "Rapture",
+                "File": "Rapture.mp3",
+                "Rating": "5.0"
+              }
+            ]
+          }
+          ,
+          {
+            "Name": "Inside",
+            "Month": "Noviembre",
+            "Year": "2015",
+            "Songs" : [
+              {
+                "Name": "On My Teeth",
+                "File": "OnMyTeeth.mp3",
+                "Rating": "7.0"
+              }
+              ,
+              {
+                "Name": "Rapture",
+                "File": "Rapture.mp3",
+                "Rating": "7.0"
+              }
+            ]
+          }
+          ,
+          {
+            "Name": "Devil",
+            "Month": "Marzo",
+            "Year": "2010",
+            "Songs" : [
+              {
+                "Name": "On My Teeth",
+                "File": "OnMyTeeth.mp3",
+                "Rating": "9.0"
+              }
+              ,
+              {
+                "Name": "Rapture",
+                "File": "Rapture.mp3",
+                "Rating": "10.0"
+              }
+            ]
+          }
         ]
       }
     }
@@ -119,6 +176,84 @@
     {
       "Artist" :{
         "Name": "Policia",
+        "Albums": [
+          {
+            "Name": "Shaped earth",
+            "Month": "Septiembre",
+            "Year": "2019",
+            "Songs": [
+              {
+                "Name": "Blinded",
+                "File": "b.mp3",
+                "Rating": "8.0"
+              }
+              ,
+              {
+                "Name": "Shaped by Fire",
+                "File": "shaped.mp3",
+                "Rating": "10.0"
+              }
+            ]
+          }
+        ]
+      }
+    }
+    ,
+    {
+      "Artist" :{
+        "Name": "Hola",
+        "Albums": [
+          {
+            "Name": "Shaped earth",
+            "Month": "Septiembre",
+            "Year": "2019",
+            "Songs": [
+              {
+                "Name": "Blinded",
+                "File": "b.mp3",
+                "Rating": "8.0"
+              }
+              ,
+              {
+                "Name": "Shaped by Fire",
+                "File": "shaped.mp3",
+                "Rating": "10.0"
+              }
+            ]
+          }
+        ]
+      }
+    }
+    ,
+    {
+      "Artist" :{
+        "Name": "Maestro",
+        "Albums": [
+          {
+            "Name": "Shaped earth",
+            "Month": "Septiembre",
+            "Year": "2019",
+            "Songs": [
+              {
+                "Name": "Blinded",
+                "File": "b.mp3",
+                "Rating": "8.0"
+              }
+              ,
+              {
+                "Name": "Shaped by Fire",
+                "File": "shaped.mp3",
+                "Rating": "10.0"
+              }
+            ]
+          }
+        ]
+      }
+    }
+    ,
+    {
+      "Artist" :{
+        "Name": "Profesor",
         "Albums": [
           {
             "Name": "Shaped earth",
