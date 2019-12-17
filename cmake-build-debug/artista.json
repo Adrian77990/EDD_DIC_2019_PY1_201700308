@@ -41,6 +41,25 @@
               }
             ]
           }
+          ,
+          {
+            "Name": "Devil Inside",
+            "Month": "Abril",
+            "Year": "2018",
+            "Songs" : [
+              {
+                "Name": "On My Teeth",
+                "File": "OnMyTeeth.mp3",
+                "Rating": "5.0"
+              }
+              ,
+              {
+                "Name": "Rapture",
+                "File": "Rapture.mp3",
+                "Rating": "7.0"
+              }
+            ]
+          }
         ]
       }
     }

@@ -110,6 +110,12 @@
 		<Unit filename="D:/Documentos/Programacion/C++/Music++/EDD/Listas/ListaPalabras/NodoPalabras.h">
 			<Option target="Music__"/>
 		</Unit>
+		<Unit filename="D:/Documentos/Programacion/C++/Music++/EDD/Listas/ListaTop/ListaTop.h">
+			<Option target="Music__"/>
+		</Unit>
+		<Unit filename="D:/Documentos/Programacion/C++/Music++/EDD/Listas/ListaTop/NodoTop.h">
+			<Option target="Music__"/>
+		</Unit>
 		<Unit filename="D:/Documentos/Programacion/C++/Music++/EDD/Listas/Pila_Cola_Circular/Lista.h">
 			<Option target="Music__"/>
 		</Unit>
