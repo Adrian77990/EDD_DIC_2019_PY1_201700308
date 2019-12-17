@@ -2,5 +2,6 @@ digraph G{
     rankdir = TB; 
     node[shape=record]; 
     graph[ranksep="1"]; 
+    nodo_rock[label="<i>|rock|<d>"];
 } 
 
