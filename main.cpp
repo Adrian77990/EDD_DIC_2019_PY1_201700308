@@ -7,9 +7,15 @@
 #include "EDD/ListaDoble.h"
 #include "EDD/CuboOrtogonal.h"
 #include "EDD/ArbolBinario/ABB.h"
+#include "EDD/Listas/ListaCanciones/ListaSimple.h"
+#include "EDD/Listas/ListaPalabras/ListaPalabras.h"
+#include "EDD/Listas/Pila_Cola_Circular/Lista.h"
+#include "EDD/Listas/ListaTop/ListaTop.h"
+#include "EDD/NodoOrtogonal.h"
 
 //DECLARACIÓN DE METODOS
 string convertir_lower(string data);
+ListaPalabras* split(string palabra, string del);
 void Menu();
 void Reportes();
 void Reproduccion();
@@ -20,6 +26,8 @@ void CargarPlaylist();
 
 //ESTRUCTURAS PARA MANEJAR LA INFORMACIÓN
 ListaDoble *listaArtistas = new ListaDoble();
+ListaSimple* allSongsList = new ListaSimple();
+ABB *arbolPlaylist = new ABB();
 
 //USINGS
 using namespace std;
@@ -45,6 +53,32 @@ string convertir_lower(string data){
     return data;
 }
 
+void replaceChars(string& modifyMe,const string& findMe, const string& newChars){
+    size_t i = modifyMe.find(findMe, 0);
+    if(i != string::npos)
+        modifyMe.replace(i, findMe.size(), newChars);
+}
+
+ListaPalabras* split(string palabra, string del){
+    size_t pos = 0;
+    string tkn;
+    ListaPalabras* l = new ListaPalabras();
+
+    while((pos = palabra.find(del)) != string::npos ){
+        tkn = palabra.substr(0, pos);
+        l->agregar(tkn);
+        palabra.erase(0, pos + del.length());
+    }
+
+    l->agregar(palabra);
+
+    return l;
+}
+
+void limpiarBuffer(){
+    while ((getchar()) != '\n');
+}
+
 void Menu(){
     int eleccionM = 0;
 
@@ -61,11 +95,9 @@ void Menu(){
         cout << "" <<  endl << endl;
         if(eleccionM == 1){
             cout<<"Carga de library json"<<endl;
-            //json_ex();
             CargarLibreria();
         }else if(eleccionM == 2){
             cout<<"Carga de playlist json"<<endl;
-            //json_play();
             CargarPlaylist();
         }else if(eleccionM == 3){
             cout<<"Reportes"<<endl;
@@ -80,6 +112,48 @@ void Menu(){
             eleccionM = 0;
         }
     }while(eleccionM != 0);
+}
+
+int mes_int (string mes){
+
+    if(mes == "enero"){
+        return 1;
+    }
+    if(mes == "febrero"){
+        return 2;
+    }
+    if(mes == "marzo"){
+        return 3;
+    }
+    if(mes == "abril"){
+        return 4;
+    }
+    if(mes == "mayo"){
+        return 5;
+    }
+    if(mes == "junio"){
+        return 6;
+    }
+    if(mes == "julio"){
+        return 7;
+    }
+    if(mes == "agosto"){
+        return 8;
+    }
+    if(mes == "septiembre"){
+        return 9;
+    }
+    if(mes == "octubre"){
+        return 10;
+    }
+    if(mes == "noviembre"){
+        return 11;
+    }
+    if(mes == "diciembre"){
+        return 12;
+    }
+    return 0;
+
 }
 
 void Reportes(){
@@ -97,22 +171,64 @@ void Reportes(){
 
         cin >> eleccionR;
 
-        cout << "" <<  endl << endl;
+
         if(eleccionR == 1){
             cout<<"Artist Report"<<endl;
+            listaArtistas->grafoy();
         }else if(eleccionR == 2){
-            cout<<"Discography Report"<<endl;
+            limpiarBuffer();
+            char nombreArtista[100];
+            cout<<endl << "Discography Report"<<endl;
+            cout << "Nombre del artista: " ;
+            cin.getline(nombreArtista, sizeof(nombreArtista));
+            listaArtistas->graficarDiscografia(nombreArtista);
         }else if(eleccionR == 3){
-            cout<<"Album Report"<<endl;
+            char nombreArtista[150];
+            char nombreAlbum[150];
+            string mes_s = "";
+            int anio;
+            int mes;
+
+            cout << endl << "Album Report"<<endl;
+            cout << "Nombre del artista: ";
+            limpiarBuffer();
+            cin.getline(nombreArtista, sizeof(nombreArtista));
+
+            cout << "Nombre del Album: ";
+            cin.getline(nombreAlbum, sizeof(nombreAlbum));
+
+            cout << "Anio del Album: ";
+            cin >> anio;
+
+            cout << "Mes del Album: ";
+            cin >> mes_s;
+
+            mes = mes_int(mes_s);
+
+            listaArtistas->graficarCanciones(nombreArtista, nombreAlbum, anio, mes);
+
         }else if(eleccionR == 4) {
             cout << "Playlist Report" << endl;
+            arbolPlaylist->graficar();
         }else if(eleccionR == 5){
+
+            limpiarBuffer();
+            char nombreArtista[100];
             cout<<"Top 5 Albums by artist report"<<endl;
+            cout << "Nombre del artista: " ;
+            cin.getline(nombreArtista, sizeof(nombreArtista));
+
+            listaArtistas->graficarTopAlbumes(nombreArtista);
+
         }else if(eleccionR == 6){
+
+            limpiarBuffer();
+            char nombreArtista[100];
             cout<<"Top 5 artists"<<endl;
+            listaArtistas->graficarTopArtistas();
+
         }else if(eleccionR == 7){
             cout<<"Regresas a menu"<<endl;
-            // Menu();
             break;
         }else{
             eleccionR = 0;
@@ -140,7 +256,6 @@ void Reproduccion(){
             PlayLista();
         }else if(eleccionREP == 3){
             cout<<"Regresar al menu principal"<<endl;
-            // Menu();
             break;
         }else{
             eleccionREP = 0;
@@ -162,8 +277,62 @@ void Biblioteca(){
         cout << "" <<  endl << endl;
         if(eleccionB == 1){
             cout<<"By artist"<<endl;
+
+            int opc;
+            listaArtistas->menuArtistas();
+            cin >> opc;
+            cout << endl << endl;
+
+            if(opc >= 1 && opc <= listaArtistas->tamano){
+                ListaDoble::Nodo *artista = listaArtistas->getArtista(opc);
+                cout << "Discografia de  " << artista->valor << endl;
+                Cuboortogonal* cubo = artista->cubo;
+                cout << "Tiene " << cubo->size << " Albumes " << endl;
+                cubo->menuAlbumes();
+                limpiarBuffer();
+                int opc2;
+                cin >> opc2;
+
+                if(opc2 >= 1 && opc2 <= cubo->size){
+                    Nodo * album = cubo->getAlbum(opc2);
+                    cout << "Canciones del album  " << album->nombre << endl;
+                    album->canciones->menuCanciones();
+                    int opc3;
+                    cin >> opc3;
+
+                    if(opc3 >= 1 && opc3 <= album->canciones->size){
+                        album->canciones->reproducirCancion(opc3);
+                    }else{
+                        cout << endl << endl;
+                        limpiarBuffer();
+                        break;
+                    }
+                }else{
+                    cout << endl << endl;
+                    limpiarBuffer();
+                    break;
+                }
+
+            }else{
+                cout << endl << endl;
+                limpiarBuffer();
+                break;
+            }
+
         }else if(eleccionB == 2){
             cout<<"By songs"<<endl;
+            allSongsList->menuTodasCanciones();
+            int opc;
+            cin >> opc;
+
+            if(opc >= 1 && opc <= allSongsList->size){
+                allSongsList->reproducirCancion(opc);
+            }else{
+                cout << endl << endl;
+                limpiarBuffer();
+                break;
+            }
+
         }else if(eleccionB == 3){
             cout<<"Regresar al menu principal"<<endl;
             Menu();
@@ -206,10 +375,6 @@ void PlayLista(){
     }while(eleccionPL != 0);
 }
 
-void CargarPlaylist(){
-
-}
-
 bool validarArtista(json artista){
     if(!artista.is_null() && !artista["Name"].is_null() && !artista["Albums"].is_null()){
         return true;
@@ -224,53 +389,60 @@ bool validarAlbum(json album){
     return false;
 }
 
-void agregarAlbums(string album, string mes, string anio, Cuboortogonal* cuboAlbums){
+bool validarCancion(json cancion){
+    if(!cancion["Name"].is_null() && !cancion["File"].is_null() && !cancion["Rating"].is_null() ){
+        return true;
+    }
+    return false;
+}
+
+void agregarAlbums(string album, string mes, string anio, Cuboortogonal* cuboAlbums, ListaSimple* canciones){
     if(mes == "enero"){
-        cuboAlbums->agregarcubo(album, cuboAlbums->enero, atoi(anio.c_str()) );
+        cuboAlbums->agregarcubo(album, cuboAlbums->enero, atoi(anio.c_str()), canciones );
     }
 
     if(mes == "febrero"){
-        cuboAlbums->agregarcubo(album, cuboAlbums->febrero, atoi(anio.c_str()) );
+        cuboAlbums->agregarcubo(album, cuboAlbums->febrero, atoi(anio.c_str()) , canciones );
     }
 
     if(mes == "marzo"){
-        cuboAlbums->agregarcubo(album, cuboAlbums->marzo, atoi(anio.c_str()) );
+        cuboAlbums->agregarcubo(album, cuboAlbums->marzo, atoi(anio.c_str()) , canciones );
     }
 
     if(mes == "abril"){
-        cuboAlbums->agregarcubo(album, cuboAlbums->abril, atoi(anio.c_str()) );
+        cuboAlbums->agregarcubo(album, cuboAlbums->abril, atoi(anio.c_str()) , canciones );
     }
 
     if(mes == "mayo"){
-        cuboAlbums->agregarcubo(album, cuboAlbums->mayo, atoi(anio.c_str()) );
+        cuboAlbums->agregarcubo(album, cuboAlbums->mayo, atoi(anio.c_str()) , canciones );
     }
 
     if(mes == "junio"){
-        cuboAlbums->agregarcubo(album, cuboAlbums->junio, atoi(anio.c_str()) );
+        cuboAlbums->agregarcubo(album, cuboAlbums->junio, atoi(anio.c_str()) , canciones );
     }
 
     if(mes == "julio"){
-        cuboAlbums->agregarcubo(album, cuboAlbums->julio, atoi(anio.c_str()) );
+        cuboAlbums->agregarcubo(album, cuboAlbums->julio, atoi(anio.c_str()) , canciones );
     }
 
     if(mes == "agosto"){
-        cuboAlbums->agregarcubo(album, cuboAlbums->agosto, atoi(anio.c_str()) );
+        cuboAlbums->agregarcubo(album, cuboAlbums->agosto, atoi(anio.c_str()) , canciones );
     }
 
     if(mes == "septiembre"){
-        cuboAlbums->agregarcubo(album, cuboAlbums->septiembre, atoi(anio.c_str()) );
+        cuboAlbums->agregarcubo(album, cuboAlbums->septiembre, atoi(anio.c_str()) , canciones );
     }
 
     if(mes == "octubre"){
-        cuboAlbums->agregarcubo(album, cuboAlbums->octubre, atoi(anio.c_str()) );
+        cuboAlbums->agregarcubo(album, cuboAlbums->octubre, atoi(anio.c_str()) , canciones );
     }
 
     if(mes == "noviembre"){
-        cuboAlbums->agregarcubo(album, cuboAlbums->noviembre, atoi(anio.c_str()) );
+        cuboAlbums->agregarcubo(album, cuboAlbums->noviembre, atoi(anio.c_str()) , canciones );
     }
 
     if(mes == "diciembre"){
-        cuboAlbums->agregarcubo(album, cuboAlbums->diciembre, atoi(anio.c_str()) );
+        cuboAlbums->agregarcubo(album, cuboAlbums->diciembre, atoi(anio.c_str()) , canciones );
     }
 }
 
@@ -308,21 +480,70 @@ void CargarLibreria(){
                         string mesAlbum = convertir_lower(album["Month"]);
                         string anioAlbum = album["Year"];
                         json cancionesAlbum = album["Songs"];
+                        ListaSimple *listaCanciones = new ListaSimple();
 
-                        agregarAlbums(nombreAlbum, mesAlbum, anioAlbum, cuboAlbums);
 
+                        for(int k = 0; k < cancionesAlbum.size(); k++){
+                            json cancion = cancionesAlbum[k];
+
+                            if(validarCancion(cancion)){
+                                string nombreCancion = cancion["Name"];
+                                string archivoCancion = cancion["File"];
+                                string ratingCancion = cancion["Rating"];
+
+
+                                allSongsList->agregar(nombreArtista, nombreCancion, archivoCancion, ratingCancion);
+                                listaCanciones->agregar(nombreCancion, archivoCancion, ratingCancion);
+                            }
+                        }
+
+                        agregarAlbums(nombreAlbum, mesAlbum, anioAlbum, cuboAlbums, listaCanciones);
                     }
                 }
                 listaArtistas->replaceChars(nombreArtista, "\"", "");
                 listaArtistas->insertarartista(nombreArtista, cuboAlbums);
             }
         }
-        listaArtistas->imprimiralbums();
     }
     reader.close();
 }
 
 
+void CargarPlaylist(){
+    string filename = "";
+
+    cout << "Nombre de la playlist: ";
+    cin >> filename;
+
+    cout << "Cargando archivo " << filename << endl << endl;
+    ifstream reader(filename);
+
+    if (reader.fail()){
+        cout << "El archivo no existe, verifique que la ruta y el archivo exista." << endl << endl;
+    }else{
+        filename = convertir_lower(filename);
+        ListaPalabras* splitFilename = split(filename, "playlist_");
+        string aux = splitFilename->getPalabra(1);
+        ListaPalabras* splitname = split(aux, ".");
+        string nombrePlaylist = splitname->getPalabra(0);
+
+
+        json playlist;
+        reader >> playlist;
+
+        string tipo = convertir_lower(playlist["Type"]);
+        json canciones = playlist["Songs"];
+        Lista *l = new Lista(tipo);
+
+        for(int i = 0; i < canciones.size(); i++){
+            json cancion = canciones[i];
+            l->agregar(cancion["Artist"], cancion["Song"], cancion["Album"], cancion["Month"], cancion["Year"]);
+        }
+
+        arbolPlaylist->agregar(nombrePlaylist, l);
+
+    }
+}
 
 
 

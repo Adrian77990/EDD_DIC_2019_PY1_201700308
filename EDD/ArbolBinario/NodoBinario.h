@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <string>
+#include "../Listas/Pila_Cola_Circular/Lista.h"
 
 using namespace std;
 
@@ -15,9 +16,10 @@ class NodoBinario {
 
 public:
     string nombre;
+    Lista * playlist;
     NodoBinario* izquierda, *derecha;
 
-    NodoBinario(string nombre);
+    NodoBinario(string nombre, Lista* playlist);
 
 };
 

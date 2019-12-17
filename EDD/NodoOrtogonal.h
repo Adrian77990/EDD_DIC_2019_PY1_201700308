@@ -7,6 +7,7 @@
 
 using namespace std;
 #include <string>
+#include "Listas/ListaCanciones/ListaSimple.h"
 
 class Nodo{
 public:
@@ -20,11 +21,13 @@ public:
     string nombre;
     int mes;
     int ano;
+    ListaSimple *canciones;
 
-    Nodo(string nombre,int mes,int ano){
+    Nodo(string nombre,int mes,int ano, ListaSimple* canciones){
         this->nombre = nombre;
         this->mes = mes;
         this->ano=ano;
+        this->canciones = canciones;
         siguientex =siguientey=siguientez=atrasx=atrasy=atrasz = NULL;
     }
 };

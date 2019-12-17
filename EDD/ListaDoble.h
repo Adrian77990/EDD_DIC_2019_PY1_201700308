@@ -9,7 +9,10 @@
 #include <fstream>
 #include "Cuboortogonal.h"
 #include <string>
+#include "Listas/ListaTop/ListaTop.h"
+
 class ListaDoble {
+public:
     class Nodo {
     public:
         Nodo *siguiente;
@@ -27,7 +30,7 @@ class ListaDoble {
 
 
     };
-public:
+
     Nodo *cabeza = NULL;
     Nodo *cola = NULL;
 
@@ -69,10 +72,10 @@ public:
     void grafoy()
     {
         ofstream archivo;
-        archivo.open("grafo.txt",ios::out);
+        archivo.open("listaArtistas.txt",ios::out);
 
         archivo<<"digraph fila{"<<endl;
-        archivo<<"	"<<endl;
+        archivo<<"	rankdir = LR;"<<endl;
 
         archivo<<"	node[shape=record];"<<endl;
         archivo<<"	graph[ranksep=\"2\"];"<<endl;
@@ -95,7 +98,8 @@ public:
         archivo<<"}"<<endl;
         archivo.close();
 
-        system("dot -Tpng grafo.txt -o grafo.png");
+        system("dot -Tpng listaArtistas.txt -o listaArtistas.png");
+        system("listaArtistas.png");
     }
 
     void insertarordenado(string valor,Cuboortogonal *cubo){
@@ -116,23 +120,36 @@ public:
                 Nodo *aux = cabeza;
                 while(aux!=NULL){
                     if(nodo->valor.compare(aux->valor)<0){
-                        //cout << nodo->valor << "es menor que " << aux->valor << " //////" << endl;
+                        nodo->siguiente = aux;
+                        nodo->anterior = aux->anterior;
+                        aux->anterior->siguiente = nodo;
+                        aux->anterior = nodo;
                         tamano++;
                         break;
                     }
                     aux = aux->siguiente;
                 }
-                nodo->siguiente = aux;
-                nodo->anterior = aux->anterior;
-                aux->anterior->siguiente = nodo;
-                aux->anterior = nodo;
-
             }
         }
     }
 
     void insertarartista(string valor, Cuboortogonal *cubo){
-        insertarordenado(valor, cubo);
+        if(!existeArtista(valor)) {
+            insertarordenado(valor, cubo);
+        }
+    }
+
+    bool existeArtista(string valor){
+        if(cabeza != NULL){
+            Nodo *aux = cabeza;
+            while(aux != NULL){
+                if(aux->valor == valor){
+                    return true;
+                }
+                aux = aux->siguiente;
+            }
+        }
+        return false;
     }
 
     void imprimiralbums()
@@ -156,6 +173,101 @@ public:
             temp = temp->siguiente;
         }
     }
+
+    void graficarDiscografia(string artista){
+        if(cabeza != NULL){
+               Nodo * aux = cabeza;
+               while(aux != NULL){
+                   if(aux->valor.compare(artista) == 0){
+                       aux->cubo->graficar();
+                       break;
+                   }
+                   aux = aux->siguiente;
+               }
+        }else{
+            cout << endl << "El artista no existe" << endl << endl;
+        }
+    }
+
+    void graficarCanciones(string artista, string album, int anio, int mes){
+        if(cabeza != NULL){
+            Nodo * aux = cabeza;
+            while(aux != NULL){
+                if(aux->valor.compare(artista) == 0){
+                    cout << "----->" << artista << " voy a graficar " << endl;
+                    aux->cubo->graficarCanciones(artista, album, mes, anio);
+                    break;
+                }
+                aux = aux->siguiente;
+            }
+        }else{
+            cout << endl << "El artista no existe" << endl << endl;
+        }
+    }
+
+    void graficarTopAlbumes(string artista){
+        if(cabeza != NULL){
+            Nodo * aux = cabeza;
+            while(aux != NULL){
+                if(aux->valor.compare(artista) == 0){
+                    aux->cubo->graficarTopAlbumes(artista);
+                    break;
+                }
+                aux = aux->siguiente;
+            }
+            if(aux == NULL){
+                cout << endl << "El artista no existe" << endl << endl;
+            }
+        }else{
+            cout << endl << "El artista no existe" << endl << endl;
+        }
+    }
+
+    void graficarTopArtistas(){
+        if(cabeza != NULL){
+            Nodo * aux = cabeza;
+            ListaTop* ltop = new ListaTop();
+
+            while(aux != NULL){
+                ltop->agregar(aux->cubo->valoracion, aux->valor);
+                aux = aux->siguiente;
+            }
+
+            ltop->graficar("Artistas");
+        }else{
+            cout << endl << "El artista no existe" << endl << endl;
+        }
+    }
+
+    void menuArtistas(){
+        int opc = 1;
+        if(cabeza != NULL){
+            Nodo* aux = cabeza;
+            cout << "----------------------------------------------" << endl;
+            while(aux != NULL){
+                cout << "   " << opc << ". " << aux->valor << endl;
+                opc++;
+                aux = aux->siguiente;
+            }
+            cout << "   Ingrese una opcion: " ;
+        }
+    }
+
+    Nodo* getArtista(int index){
+        int i = 1;
+        if(cabeza != NULL ){
+            Nodo* aux = cabeza;
+            while(aux != NULL){
+                if(index == i){
+                    return aux;
+                }
+                i++;
+                aux = aux->siguiente;
+            }
+        }
+        return NULL;
+    }
+
 };
 
 

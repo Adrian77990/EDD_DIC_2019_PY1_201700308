@@ -4,7 +4,8 @@
 
 #include "NodoBinario.h"
 
-NodoBinario::NodoBinario(string nombre) {
+NodoBinario::NodoBinario(string nombre, Lista* playlist) {
     this->nombre = nombre;
+    this->playlist = playlist;
     izquierda = derecha = NULL;
 }

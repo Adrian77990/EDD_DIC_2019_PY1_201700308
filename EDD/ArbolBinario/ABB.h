@@ -7,6 +7,7 @@
 
 
 #include "NodoBinario.h"
+#include "../Listas/Pila_Cola_Circular/Lista.h"
 #include <iostream>
 
 using namespace std;
@@ -14,13 +15,16 @@ using namespace std;
 class ABB {
 public:
     NodoBinario* raiz;
+    int size;
 
     ABB();
 
-    void agregar(string nombre);
+    void agregar(string nombre, Lista* lista);
     void imprimirEnOrden();
     void imprimirPreOrden();
     void imprimirPostOrden();
+
+    void graficar();
 
 
 
@@ -29,6 +33,9 @@ private:
     void imprimirEnOrden(NodoBinario* nodo);
     void imprimirPreOrden(NodoBinario* nodo);
     void imprimirPostOrden(NodoBinario* nodo);
+    void graficar(NodoBinario* nodo, string& s);
+    void replaceChars(string& modifyMe,const string& findMe, const string& newChars);
+
 };
 
 

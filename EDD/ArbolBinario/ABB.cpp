@@ -2,6 +2,7 @@
 // Created by aybso on 15/12/2019.
 //
 
+#include <fstream>
 #include "ABB.h"
 
 ABB::ABB() {
@@ -10,6 +11,7 @@ ABB::ABB() {
 
 NodoBinario* ABB::agregar(NodoBinario *nodo, NodoBinario *data) {
     if (nodo == NULL){
+        size++;
         return data;
     }
 
@@ -29,15 +31,20 @@ void ABB::imprimirEnOrden(NodoBinario *nodo) {
     if(nodo != NULL){
         imprimirEnOrden(nodo->izquierda);
         cout << nodo->nombre << endl;
+        cout << "------------------------"<<endl;
+        nodo->playlist->imprimir();
         imprimirEnOrden(nodo->derecha);
+        cout << endl << endl;
     }
 }
 
 void ABB::imprimirPreOrden(NodoBinario *nodo) {
     if(nodo != NULL){
         cout << nodo->nombre << endl;
+        nodo->playlist->imprimir();
         imprimirPreOrden(nodo->izquierda);
         imprimirPreOrden(nodo->derecha);
+        cout << endl << endl;
     }
 }
 
@@ -46,11 +53,14 @@ void ABB::imprimirPostOrden(NodoBinario *nodo) {
         imprimirPostOrden(nodo->izquierda);
         imprimirPostOrden(nodo->derecha);
         cout << nodo->nombre << endl;
+        nodo->playlist->imprimir();
+        cout << endl << endl;
     }
 }
 
-void ABB::agregar(string nombre) {
-    raiz = agregar(raiz, new NodoBinario(nombre));
+void ABB::agregar(string nombre, Lista* lista) {
+    raiz = agregar(raiz, new NodoBinario(nombre, lista));
+
 }
 
 void ABB::imprimirEnOrden() {
@@ -64,3 +74,48 @@ void ABB::imprimirPreOrden() {
 void ABB::imprimirPostOrden() {
     imprimirPostOrden(raiz);
 }
+
+void ABB::graficar(NodoBinario* nodo, string& s) {
+
+    if(nodo != NULL){
+        string nombre = nodo->nombre;
+        replaceChars(nombre, " ", "_");
+
+        s += "    nodo_" + nombre + "[label=\"<i>|" + nombre + "|<d>\"];\n";
+        if(nodo->izquierda != NULL){
+            s += "    nodo_" + nodo->nombre + ":i->" + "nodo_" + nodo->izquierda->nombre + ";\n";
+        }
+
+        if(nodo->derecha != NULL){
+            s += "    nodo_" + nodo->nombre + ":d->" + "nodo_" + nodo->derecha->nombre + ";\n";
+        }
+
+        graficar(nodo->izquierda, s);
+        graficar(nodo->derecha, s);
+    }
+
+}
+
+void ABB::replaceChars(string& modifyMe,const string& findMe, const string& newChars){
+    size_t i = modifyMe.find(findMe, 0);
+    if(i != string::npos)
+        modifyMe.replace(i, findMe.size(), newChars);
+}
+
+void ABB::graficar() {
+    ofstream archivo;
+    archivo.open("abb.txt",ios::out);
+
+    string s = "digraph G{ \n";
+    s+= "    rankdir = TB; \n";
+    s+= "    node[shape=record]; \n";
+    s+= "    graph[ranksep=\"1\"]; \n";
+    graficar(raiz, s);
+    s+= "} \n";
+
+    archivo << s << endl;
+    archivo.close();
+    system("dot -Tpng abb.txt -o abb.png");
+    system("abb.png");
+}
+
