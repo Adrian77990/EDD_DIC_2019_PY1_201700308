@@ -7,6 +7,7 @@
 
 ABB::ABB() {
     this->raiz = NULL;
+    size = 0;
 }
 
 NodoBinario* ABB::agregar(NodoBinario *nodo, NodoBinario *data) {
@@ -118,4 +119,57 @@ void ABB::graficar() {
     system("dot -Tpng abb.txt -o abb.png");
     system("abb.png");
 }
+
+void ABB::menuEnOrden(NodoBinario *nodo, int& i) {
+    if(nodo != NULL){
+        menuEnOrden(nodo->izquierda, i );
+        i = i + 1;
+        cout << "   " << i << ". " << nodo->nombre << " [" <<nodo->playlist->tipoEstructura << "]" << endl;
+        i = i + 1;
+        menuEnOrden(nodo->derecha, i);
+    }else{
+        i = i - 1;
+    }
+}
+
+void ABB::menuPlaylist(){
+    if(raiz != NULL){
+        int i = 1;
+        cout << "----------------------------------------------" << endl;
+        menuEnOrden(raiz, i);
+        cout << "   " << i + 1 << ". Salir" << endl;
+        cout << "   Ingrese una opcion: ";
+    }else{
+        cout << endl << endl << "No hay ninguna playlist registrada" << endl << endl;
+    }
+}
+
+void ABB::reproducirMusica(NodoBinario *nodo, int& i, int index) {
+    if(nodo != NULL){
+        reproducirMusica(nodo->izquierda, i, index);
+        i = i + 1;
+
+        if(i == index){
+            cout << endl << " *******  REPRODUCIENDO LA PLAYLIST " << nodo->nombre << "  ******* " <<  endl;
+            if(nodo->playlist->tipoEstructura == "stack"){
+                nodo->playlist->reproducirPopDequeue(nodo->nombre,"orange","stack");
+            }
+
+            if(nodo->playlist->tipoEstructura == "queue"){
+                nodo->playlist->reproducirPopDequeue(nodo->nombre,"yellow","queue");
+            }
+        }
+
+        i = i + 1;
+        reproducirMusica(nodo->derecha, i, index);
+    }else{
+        i = i - 1;
+    }
+}
+
+void ABB::reproducirMusica(int index) {
+    int i = 1;
+    reproducirMusica(raiz, i, index );
+}
+
 

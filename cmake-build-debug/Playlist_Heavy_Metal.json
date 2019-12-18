@@ -1,5 +1,5 @@
 {
-  "Type": "Stack",
+  "Type": "Circular",
   "Songs": [
     {
       "Year": "2004",
@@ -23,6 +23,14 @@
       "Album": "Shaped By Fire",
       "Song": "Blinded",
       "Artist": "As I Lay Dying"
+    }
+    ,
+    {
+      "Year": "2009",
+      "Month": "Septiembre",
+      "Album": "Listen to me",
+      "Song": "My words",
+      "Artist": "Pxnda"
     }
   ]
 }

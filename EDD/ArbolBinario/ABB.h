@@ -25,6 +25,9 @@ public:
     void imprimirPostOrden();
 
     void graficar();
+    void menuPlaylist();
+    void reproducirMusica(int index);
+
 
 
 
@@ -35,6 +38,8 @@ private:
     void imprimirPostOrden(NodoBinario* nodo);
     void graficar(NodoBinario* nodo, string& s);
     void replaceChars(string& modifyMe,const string& findMe, const string& newChars);
+    void menuEnOrden(NodoBinario* nodo, int& i);
+    void reproducirMusica(NodoBinario* nodo, int& i, int index);
 
 };
 

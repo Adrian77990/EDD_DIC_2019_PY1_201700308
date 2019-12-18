@@ -108,7 +108,11 @@ void Menu(){
             CargarPlaylist();
         }else if(eleccionM == 3){
             cout<<"Reportes"<<endl;
-            Reportes();
+            if(listaArtistas->tamano > 0 ){
+                Reportes();
+            }else{
+                cout << endl << " ****** DEBES DE CARGAR UNA LIBRERIA ****** " << endl << endl;
+            }
         }else if(eleccionM == 4){
             cout<<"Reproduccion de musica"<<endl;
             Reproduccion();
@@ -257,7 +261,11 @@ void Reproduccion(){
         cout << "" <<  endl << endl;
         if(eleccionREP == 1){
             cout<<"Biblioteca"<<endl;
-            Biblioteca();
+            if(listaArtistas->tamano > 0){
+                Biblioteca();
+            }else{
+                cout << endl << " ****** DEBES DE CARGAR UNA LIBRERIA ****** " << endl << endl;
+            }
         }else if(eleccionREP == 2){
             cout<<"Playlist"<<endl;
             PlayLista();
@@ -351,35 +359,27 @@ void Biblioteca(){
 }
 
 void PlayLista(){
-    int eleccionPL = 0;
+
+    int opc = 0;
 
     do{
-        cout<<"	1 Stack Pila"<<endl;
-        cout<<"	2 Queue Cola"<<endl;
-        cout<<"	3 Shuffle Lista doblemente enlazada"<<endl;
-        cout<<"	4 Circular Lista doblemente enlazada circular"<<endl;
-        cout<<"	5 Regresar al menu principal"<<endl;
-        cout << "Ingresa una opcion: ";
-
-        cin >> eleccionPL;
-
-        cout << "" <<  endl << endl;
-        if(eleccionPL == 1){
-            cout<<"Stack"<<endl;
-        }else if(eleccionPL == 2){
-            cout<<"Queue"<<endl;
-        }else if(eleccionPL == 3){
-            cout<<"Shuffle"<<endl;
-        }else if(eleccionPL == 4){
-            cout<<"Circular"<<endl;
-        }else if(eleccionPL == 5){
-            cout<<"Regresar al menu principal"<<endl;
-            Menu();
+        if(arbolPlaylist->size == 0){
+            cout << endl << " ******* Debes de cargar una playlist  ******* " <<endl << endl << endl;
             break;
-        }else{
-            eleccionPL = 0;
         }
-    }while(eleccionPL != 0);
+
+        arbolPlaylist->menuPlaylist();
+        cin >> opc;
+
+        if(opc >= 1 && opc <= arbolPlaylist->size){
+            arbolPlaylist->reproducirMusica(opc);
+        }else if(opc == arbolPlaylist->size + 1){
+            cout << endl;
+            break;
+        }
+    }while(opc <= 0 || opc > arbolPlaylist->size );
+
+    cout << endl << endl;
 }
 
 bool validarArtista(json artista){
@@ -550,6 +550,8 @@ void CargarPlaylist(){
         arbolPlaylist->agregar(nombrePlaylist, l);
 
     }
+
+
 }
 
 

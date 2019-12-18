@@ -1,5 +1,5 @@
 {
-  "Type": "Stack",
+  "Type": "Shuffle",
   "Songs": [
     {
       "Year": "2004",
@@ -23,6 +23,22 @@
       "Album": "Shaped By Fire",
       "Song": "Blinded",
       "Artist": "As I Lay Dying"
+    }
+    ,
+    {
+      "Year": "2008",
+      "Month": "Abril",
+      "Album": "Forget",
+      "Song": "Don't Forget Me",
+      "Artist": "Starkillers"
+    }
+    ,
+    {
+      "Year": "2009",
+      "Month": "Enero",
+      "Album": "Hell and Heaven",
+      "Song": "Mrs.Heaven",
+      "Artist": "Cathy"
     }
   ]
 }

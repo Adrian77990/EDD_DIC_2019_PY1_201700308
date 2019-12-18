@@ -20,6 +20,7 @@ public:
     bool stack, queue, circular, shuffle;
     int tipo = 1;
     int size;
+    string tipoEstructura;
 
     Lista(string estructura){
         cabeza = cola = NULL;
@@ -41,6 +42,8 @@ public:
             circular = true;
         }
 
+
+        tipoEstructura = estructura;
         size = 0;
     }
 

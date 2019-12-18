@@ -1,5 +1,5 @@
 {
-  "Type": "Stack",
+  "Type": "Queue",
   "Songs": [
     {
       "Year": "2004",
@@ -23,6 +23,22 @@
       "Album": "Shaped By Fire",
       "Song": "Blinded",
       "Artist": "As I Lay Dying"
+    }
+    ,
+    {
+      "Year": "2019",
+      "Month": "Octubre",
+      "Album": "Halloween",
+      "Song": "Friday 13",
+      "Artist": "Jason"
+    }
+    ,
+    {
+      "Year": "2019",
+      "Month": "Noviembre",
+      "Album": "Breakheart",
+      "Song": "Lover",
+      "Artist": "Cosmo"
     }
   ]
 }
