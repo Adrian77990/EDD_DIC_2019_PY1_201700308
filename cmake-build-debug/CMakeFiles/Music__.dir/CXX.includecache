@@ -6,12 +6,6 @@
 
 #IncludeRegexTransform: 
 
-D:/Documentos/Programacion/C++/Music++/EDD/ArbolBinario/ABB.cpp
-fstream
--
-ABB.h
-D:/Documentos/Programacion/C++/Music++/EDD/ArbolBinario/ABB.h
-
 D:/Documentos/Programacion/C++/Music++/EDD/ArbolBinario/ABB.h
 NodoBinario.h
 D:/Documentos/Programacion/C++/Music++/EDD/ArbolBinario/NodoBinario.h
@@ -19,10 +13,6 @@ D:/Documentos/Programacion/C++/Music++/EDD/ArbolBinario/NodoBinario.h
 D:/Documentos/Programacion/C++/Music++/EDD/Listas/Pila_Cola_Circular/Lista.h
 iostream
 -
-
-D:/Documentos/Programacion/C++/Music++/EDD/ArbolBinario/NodoBinario.cpp
-NodoBinario.h
-D:/Documentos/Programacion/C++/Music++/EDD/ArbolBinario/NodoBinario.h
 
 D:/Documentos/Programacion/C++/Music++/EDD/ArbolBinario/NodoBinario.h
 iostream
@@ -103,6 +93,10 @@ string
 -
 Nodo.h
 D:/Documentos/Programacion/C++/Music++/EDD/Listas/Pila_Cola_Circular/Nodo.h
+fstream
+-
+unistd.h
+-
 
 D:/Documentos/Programacion/C++/Music++/EDD/Listas/Pila_Cola_Circular/Nodo.h
 iostream
@@ -425,4 +419,6 @@ EDD/Listas/ListaTop/ListaTop.h
 D:/Documentos/Programacion/C++/Music++/EDD/Listas/ListaTop/ListaTop.h
 EDD/NodoOrtogonal.h
 D:/Documentos/Programacion/C++/Music++/EDD/NodoOrtogonal.h
+unistd.h
+-
 

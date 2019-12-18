@@ -8,6 +8,8 @@
 #include <iostream>
 #include <string>
 #include "Nodo.h"
+#include <fstream>
+#include <unistd.h>
 
 using namespace std;
 
@@ -21,7 +23,7 @@ public:
 
     Lista(string estructura){
         cabeza = cola = NULL;
-        stack = queue = circular = false;
+        stack = queue = circular = shuffle = false;
 
         if(estructura == "stack"){
             stack = true;
@@ -54,6 +56,10 @@ public:
         if(shuffle){
             agregarShuffle(artista, cancion, album, mes, anio);
         }
+
+        if(circular){
+            agregarCircular(artista, cancion, album, mes, anio);
+        }
     }
 
     void imprimir(){
@@ -65,6 +71,202 @@ public:
                 cont++;
                 aux = aux->siguiente;
             }
+
+            if(shuffle){
+                cout << "-- DE REGRESO <--" << endl;
+                int contr = 0;
+                NodoL* aux = cola;
+                while(contr < size){
+                    cout << "ALBUM -> " << aux->album << " ------- CANCION ->  " << aux->cancion << " -------- ARTISTA -> " << aux->artista << endl;
+                    contr++;
+                    aux = aux->anterior;
+                }
+            }
+
+            if(circular){
+                cout << "ALBUM -> " << aux->album << " ------- CANCION ->  " << aux->cancion << " -------- ARTISTA -> " << aux->artista << endl;
+
+                cout << "-- DE REGRESO <--" << endl;
+                int contr = 0;
+                NodoL* aux = cola;
+                while(contr < size){
+                    cout << "ALBUM -> " << aux->album << " ------- CANCION ->  " << aux->cancion << " -------- ARTISTA -> " << aux->artista << endl;
+                    contr++;
+                    aux = aux->anterior;
+                }
+
+                cout << "ALBUM -> " << aux->album << " ------- CANCION ->  " << aux->cancion << " -------- ARTISTA -> " << aux->artista << endl;
+
+            }
+
+        }
+    }
+
+    NodoL* sacar(){
+        if(cabeza != NULL && (stack || queue)){
+            NodoL* aux = cabeza;
+            cabeza = cabeza->siguiente;
+            size--;
+            return aux;
+        }
+        cout << "No se puede sacar porque no es ni pila, ni cola" << endl;
+        return NULL;
+    }
+
+    void reproducirStackQueue(string nombrePlaylist, string color, string es){
+
+        if(cabeza != NULL){
+
+            NodoL* cancion = cabeza;
+            int contCanciones = 1;
+
+            while(contCanciones <= size){
+                NodoL* auxCancion = cancion;
+                int auxContCanciones = 1;
+
+                ofstream archivo;
+                archivo.open("reproducirStack.txt",ios::out);
+                archivo << "digraph G{" << endl;
+
+                if(stack){
+                    archivo << "   rankdir = TB;" << endl;
+                }
+
+                if(queue){
+                    archivo << "   rankdir = LR;" << endl;
+                }
+
+                archivo << "   node[shape=record];" << endl;
+                archivo << "   graph[ranksep = \"1\"];" << endl <<endl;
+
+                while(auxContCanciones <= ((size + 1) - contCanciones)){
+                    if(auxContCanciones == 1){
+                        archivo << "    nodo_"<< auxContCanciones <<"[style=filled, fillcolor="<<color<<", label=\" [CANCION] "<< auxCancion->cancion  <<" \"];"<< endl;
+                    }else{
+                        archivo << "    nodo_"<< auxContCanciones <<"[label=\" [CANCION] "<< auxCancion->cancion  <<" \"];"<< endl;
+                    }
+
+                    if(auxCancion->siguiente != NULL){
+                        archivo << "    nodo_" << auxContCanciones << "->nodo_" << auxContCanciones + 1 << ";" << endl;
+                    }
+
+                    auxContCanciones++;
+                    auxCancion = auxCancion->siguiente;
+                }
+
+                archivo << "    labelloc=\"t\"" << endl;
+                archivo << "    label = \"Reproduciendo Playlist " << nombrePlaylist << " Tipo "<< es <<" \" " << endl;
+                archivo << "}" << endl;
+                archivo.close();
+                system("dot -Tpng reproducirStack.txt -o reproducirStack.png");
+                system("reproducirStack.png");
+
+                usleep(3000000);
+                cout << endl << endl << endl;
+                contCanciones++;
+                cancion = cancion->siguiente;
+            }
+
+            ofstream archivo;
+            archivo.open("reproducirStack.txt",ios::out);
+            archivo << "digraph G{" << endl;
+            archivo << "   rankdir = LR;" << endl;
+            archivo << "   node[shape=record];" << endl;
+            archivo << "   graph[ranksep = \"1\"];" << endl <<endl;
+            archivo << "    nodo[label=\" FIN DE LA PLAYLIST \"];"<< endl;
+            archivo << "}" << endl;
+            archivo.close();
+            system("dot -Tpng reproducirStack.txt -o reproducirStack.png");
+            system("reproducirStack.png");
+        }else{
+            ofstream archivo;
+            archivo.open("reproducirStack.txt",ios::out);
+            archivo << "digraph G{" << endl;
+            archivo << "   rankdir = LR;" << endl;
+            archivo << "   node[shape=record];" << endl;
+            archivo << "   graph[ranksep = \"1\"];" << endl <<endl;
+            archivo << "    nodo[label=\" LA PLAYLIST "<< nombrePlaylist <<" ESTA VACIA \"];"<< endl;
+            archivo << "}" << endl;
+            archivo.close();
+            system("dot -Tpng reproducirStack.txt -o reproducirStack.png");
+            system("reproducirStack.png");
+        }
+    }
+
+    void reproducirPopDequeue(string nombrePlaylist, string color, string es){
+
+        if(cabeza != NULL){
+
+            while(size > 0){
+                ofstream archivo;
+                archivo.open("reproducirStack.txt",ios::out);
+                archivo << "digraph G{" << endl;
+
+                if(stack){
+                    archivo << "   rankdir = TB;" << endl;
+                }
+
+                if(queue){
+                    archivo << "   rankdir = LR;" << endl;
+                }
+
+                archivo << "   node[shape=record];" << endl;
+                archivo << "   graph[ranksep = \"1\"];" << endl <<endl;
+
+                NodoL* aux = cabeza;
+                int cont = 1;
+
+                while(cont <= size){
+                    if(cont == 1){
+                        archivo << "    nodo_"<< cont <<"[style=filled, fillcolor="<<color<<", label=\" [CANCION] "<< aux->cancion  <<" \"];"<< endl;
+                    }else{
+                        archivo << "    nodo_"<< cont <<"[label=\" [CANCION] "<< aux->cancion  <<" \"];"<< endl;
+                    }
+
+                    if(aux->siguiente != NULL){
+                        archivo << "    nodo_" << cont << "->nodo_" << cont + 1 << ";" << endl;
+                    }
+                    cont++;
+                    aux = aux->siguiente;
+                }
+
+                sacar(); //SACAR == METODO POP == METODO DEQUEUE
+
+
+                archivo << "    labelloc=\"t\"" << endl;
+                archivo << "    label = \"Reproduciendo Playlist " << nombrePlaylist << " Tipo "<< es <<" \" " << endl;
+                archivo << "}" << endl;
+                archivo.close();
+                system("dot -Tpng reproducirStack.txt -o reproducirStack.png");
+                system("reproducirStack.png");
+
+                usleep(3000000);
+            }
+
+            ofstream archivo;
+            archivo.open("reproducirStack.txt",ios::out);
+            archivo << "digraph G{" << endl;
+            archivo << "   rankdir = LR;" << endl;
+            archivo << "   node[shape=record];" << endl;
+            archivo << "   graph[ranksep = \"1\"];" << endl <<endl;
+            archivo << "    nodo[label=\" FIN DE LA PLAYLIST \"];"<< endl;
+            archivo << "}" << endl;
+            archivo.close();
+            system("dot -Tpng reproducirStack.txt -o reproducirStack.png");
+            system("reproducirStack.png");
+
+        }else{
+            ofstream archivo;
+            archivo.open("reproducirStack.txt",ios::out);
+            archivo << "digraph G{" << endl;
+            archivo << "   rankdir = LR;" << endl;
+            archivo << "   node[shape=record];" << endl;
+            archivo << "   graph[ranksep = \"1\"];" << endl <<endl;
+            archivo << "    nodo[label=\" LA PLAYLIST "<< nombrePlaylist <<" ESTA VACIA \"];"<< endl;
+            archivo << "}" << endl;
+            archivo.close();
+            system("dot -Tpng reproducirStack.txt -o reproducirStack.png");
+            system("reproducirStack.png");
         }
     }
 

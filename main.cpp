@@ -12,6 +12,7 @@
 #include "EDD/Listas/Pila_Cola_Circular/Lista.h"
 #include "EDD/Listas/ListaTop/ListaTop.h"
 #include "EDD/NodoOrtogonal.h"
+#include <unistd.h>
 
 //DECLARACIÓN DE METODOS
 string convertir_lower(string data);
@@ -36,6 +37,12 @@ using json = nlohmann::json;
 
 //----------------------------------------------MAIN----------------------------------------------
 int main() {
+
+    //pila->reproducirStackQueue("Rock","orange", "Stack");
+
+    //cola->reproducirStackQueue("Electronica","yellow","Queue");
+    //cola->reproducirPopDequeue("Electronica","yellow","Queue");
+    //cola->reproducirPopDequeue("Electronica","yellow","Queue");
 
     Menu();
 
