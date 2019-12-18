@@ -158,6 +158,14 @@ void ABB::reproducirMusica(NodoBinario *nodo, int& i, int index) {
             if(nodo->playlist->tipoEstructura == "queue"){
                 nodo->playlist->reproducirPopDequeue(nodo->nombre,"yellow","queue");
             }
+
+            if(nodo->playlist->tipoEstructura == "shuffle"){
+                nodo->playlist->reproducirShuffle(nodo->nombre);
+            }
+
+            if(nodo->playlist->tipoEstructura == "circular"){
+                nodo->playlist->reproducirCircular(nodo->nombre);
+            }
         }
 
         i = i + 1;

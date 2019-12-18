@@ -38,12 +38,6 @@ using json = nlohmann::json;
 //----------------------------------------------MAIN----------------------------------------------
 int main() {
 
-    //pila->reproducirStackQueue("Rock","orange", "Stack");
-
-    //cola->reproducirStackQueue("Electronica","yellow","Queue");
-    //cola->reproducirPopDequeue("Electronica","yellow","Queue");
-    //cola->reproducirPopDequeue("Electronica","yellow","Queue");
-
     Menu();
 
     return 0;
@@ -108,11 +102,7 @@ void Menu(){
             CargarPlaylist();
         }else if(eleccionM == 3){
             cout<<"Reportes"<<endl;
-            if(listaArtistas->tamano > 0 ){
                 Reportes();
-            }else{
-                cout << endl << " ****** DEBES DE CARGAR UNA LIBRERIA ****** " << endl << endl;
-            }
         }else if(eleccionM == 4){
             cout<<"Reproduccion de musica"<<endl;
             Reproduccion();
@@ -234,7 +224,6 @@ void Reportes(){
         }else if(eleccionR == 6){
 
             limpiarBuffer();
-            char nombreArtista[100];
             cout<<"Top 5 artists"<<endl;
             listaArtistas->graficarTopArtistas();
 
